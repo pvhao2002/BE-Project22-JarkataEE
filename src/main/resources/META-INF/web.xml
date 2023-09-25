@@ -1,0 +1,27 @@
+<web-app>
+    <filter>
+        <filter-name>CorsFilter</filter-name>
+        <filter-class>org.apache.catalina.filters.CorsFilter</filter-class>
+        <init-param>
+            <param-name>cors.allowed.origins</param-name>
+            <param-value>*</param-value> <!-- Allow requests from any origin; you can specify specific origins -->
+        </init-param>
+        <init-param>
+            <param-name>cors.allowed.methods</param-name>
+            <param-value>GET, POST, PUT, DELETE, OPTIONS, HEAD</param-value> <!-- Specify allowed HTTP methods -->
+        </init-param>
+        <init-param>
+            <param-name>cors.allowed.headers</param-name>
+            <param-value>Content-Type</param-value> <!-- Specify allowed request headers -->
+        </init-param>
+        <init-param>
+            <param-name>cors.exposed.headers</param-name>
+            <param-value>Location</param-value> <!-- Specify headers to expose to the client -->
+        </init-param>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>CorsFilter</filter-name>
+        <url-pattern>/*</url-pattern> <!-- Specify the URL pattern for which CORS is enabled -->
+    </filter-mapping>
+</web-app>

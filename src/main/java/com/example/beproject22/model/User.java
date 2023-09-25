@@ -17,4 +17,5 @@ public class User {
     private String fullName;
     private Integer roleId;
     private Boolean isDeleted;
+    private Role role;
 }

@@ -2,6 +2,7 @@ package com.example.beproject22.service;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 
 public class DBConnect {
     static final String URL_DB = "jdbc:mysql://localhost:3306/project22";
@@ -13,7 +14,7 @@ public class DBConnect {
         try {
 //            Class.forName("com.mysql.jdbc.Driver");
             cnt = DriverManager.getConnection(URL_DB, USER, PASS);
-        } catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return cnt;
