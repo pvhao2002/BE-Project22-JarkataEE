@@ -11,7 +11,7 @@ public interface IUserService {
 
     public Object update(User user);
 
-    public Object delete(String username);
+    public Object delete(int id);
 
     public List<User> getAll();
 

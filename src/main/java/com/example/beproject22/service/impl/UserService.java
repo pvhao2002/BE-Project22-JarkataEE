@@ -38,7 +38,7 @@ public class UserService implements IUserService {
                 ps.setString(1, user.getUsername());
                 ps.setString(2, user.getPassword());
                 ps.setString(3, user.getFullName());
-                ps.setLong(4, user.getRoleId());
+                ps.setInt(4, user.getRoleId());
                 ps.executeUpdate();
             }
             return SUCCESS;
@@ -59,12 +59,13 @@ public class UserService implements IUserService {
         PreparedStatement ps = null;
         try (Connection cnt = DBConnect.getConnection()) {
             if (cnt != null) {
-                String sql = "UPDATE users SET password = ?, fullname = ?, role_id = ? WHERE username = ?";
+                String sql = "UPDATE users SET password = ?, fullname = ?, role_id = ?, is_deleted = ? WHERE id = ?";
                 ps = cnt.prepareStatement(sql);
                 ps.setString(1, user.getPassword());
                 ps.setString(2, user.getFullName());
-                ps.setLong(3, user.getRoleId());
-                ps.setString(4, user.getUsername());
+                ps.setInt(3, user.getRoleId());
+                ps.setBoolean(4, user.getIsDeleted());
+                ps.setInt(5, user.getId());
                 ps.executeUpdate();
             }
             return SUCCESS;
@@ -80,14 +81,14 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public Object delete(String username) {
+    public Object delete(int id) {
         // to do
         PreparedStatement ps = null;
         try (Connection cnt = DBConnect.getConnection()) {
             if (cnt != null) {
-                String sql = "UPDATE users SET is_deleted = 1 WHERE username = ?";
+                String sql = "UPDATE users SET is_deleted = 1 WHERE id = ?";
                 ps = cnt.prepareStatement(sql);
-                ps.setString(1, username);
+                ps.setInt(1, id);
                 ps.executeUpdate();
             }
             return SUCCESS;
@@ -145,7 +146,7 @@ public class UserService implements IUserService {
         PreparedStatement ps = null;
         try (Connection cnt = DBConnect.getConnection()) {
             if (cnt != null) {
-                String sql = "SELECT * FROM users WHERE id = ? AND is_deleted = 0";
+                String sql = "SELECT * FROM users WHERE id = ?";
                 ps = cnt.prepareStatement(sql);
                 ps.setInt(1, id);
                 user = getUser(ps);

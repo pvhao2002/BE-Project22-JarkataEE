@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DBConnect {
-    static final String URL_DB = "jdbc:mysql://localhost:3306/project22";
+    static final String URL_DB = "jdbc:mysql://localhost:3306/project22?sessionVariables=sql_mode='NO_ENGINE_SUBSTITUTION'&jdbcCompliantTruncation=false";
     static final String USER = "root";
     static final String PASS = "";
 
