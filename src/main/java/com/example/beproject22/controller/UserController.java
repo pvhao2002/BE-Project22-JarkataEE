@@ -15,7 +15,7 @@ import jakarta.ws.rs.core.MediaType;
 @Path("/user")
 public class UserController {
     private final IUserService userService = new UserService();
-    private static final Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create();
+    private final Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create();
 
     @Path("/login")
     @POST

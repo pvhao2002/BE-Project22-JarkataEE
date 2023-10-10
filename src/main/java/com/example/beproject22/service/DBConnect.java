@@ -6,6 +6,7 @@ import java.sql.SQLException;
 
 public class DBConnect {
     static final String URL_DB = "jdbc:mysql://localhost:3306/project22?sessionVariables=sql_mode='NO_ENGINE_SUBSTITUTION'&jdbcCompliantTruncation=false";
+//    static final String URL_DB = "jdbc:sqlserver://localhost:1433;databaseName=project22";
     static final String USER = "root";
     static final String PASS = "";
 

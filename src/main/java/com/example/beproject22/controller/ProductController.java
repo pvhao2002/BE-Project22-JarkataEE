@@ -15,7 +15,7 @@ import jakarta.ws.rs.core.MediaType;
 @Path("/product")
 public class ProductController {
     private final IProductService productService = new ProductService();
-    private static final Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create();
+    private final Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create();
 
     @Path("/getAll")
     @GET
